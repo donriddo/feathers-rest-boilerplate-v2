@@ -1,6 +1,6 @@
 {
-  "name": "feathers-api-boilerplate",
-  "description": "An API for all Fishioscoper's Feathers' Projects",
+  "name": "feathers-rest-boilerplate-v2",
+  "description": "A Boilerplate for Feathers' Projects",
   "version": "0.0.0",
   "homepage": "",
   "main": "src",

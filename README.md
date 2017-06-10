@@ -1,6 +1,6 @@
 # feathers-api-boilerplate
 
-> An API for all Fishioscoper&#39;s Feathers&#39; Projects
+> A Boilerplate for all Feathers Projects
 
 ## About
 
@@ -20,12 +20,12 @@ Getting up and running is as easy as 1, 2, 3.
 3. Start your app
 
     ```
-    npm start
+    npm run start
     ```
 
 ## Testing
 
-Simply run `npm test` and all your tests in the `test/` directory will be run.
+Simply run `npm run test` and all the tests in the `test/` directory will be run.
 
 ## Scaffolding
 
