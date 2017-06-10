@@ -1,6 +1,6 @@
-# feathers-api-boilerplate
+# feathers-api-boilerplate-v2
 
-> A Boilerplate for all Feathers Projects
+> A Boilerplate for all Fishioscoper's Feathers' Projects
 
 ## About
 
@@ -14,7 +14,7 @@ Getting up and running is as easy as 1, 2, 3.
 2. Install your dependencies
 
     ```
-    cd path/to/feathers-api-boilerplate; npm install
+    cd path/to/feathers-api-boilerplate-v2; npm install
     ```
 
 3. Start your app
