@@ -1,7 +1,7 @@
 {
   "name": "feathers-api-boilerplate-v2",
   "description": "A Boilerplate for Feathers' Projects",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "",
   "main": "src",
   "keywords": [
