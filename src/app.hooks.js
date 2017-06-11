@@ -2,10 +2,12 @@
 // const logger = require('./hooks/logger');
 const filterDelete = require('./hooks/filter-delete');
 const setUpdatedAt = require('./hooks/set-updated-at');
+const softDelete = require('./hooks/soft-delete');
+
 module.exports = {
 
   before: {
-    all: [],
+    all: [softDelete()],
     find: [],
     get: [],
     create: [],

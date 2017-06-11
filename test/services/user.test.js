@@ -276,19 +276,58 @@ describe('User service', function () {
         .set('Authorization', 'Bearer '.concat(token))
         .end((err, res) => {
           expect(res).to.have.status(200);
-          expect(res.body).to.include.keys('email');
+          expect(res.body).to.include.keys('email', 'isDeleted');
+          expect(res.body.isDeleted).to.equal(true);
           done();
         });
     });
 
-    it('should return 200: User already Soft-Deleted', done => {
+    it('should return 404: User already Soft-Deleted', done => {
       chai.request(app)
-        .delete(`/user/${id}`)
+        .get(`/user/${id}`)
+        .set('Authorization', 'Bearer '.concat(token))
+        .end((err, res) => {
+          expect(res).to.have.status(404);
+          expect(res.body).to.have.property('message');
+          expect(res.body.message).to.equal('User not found');
+          done();
+        });
+    });
+
+    it('should return 200: Should also return if Deleted', done => {
+      chai.request(app)
+        .get(`/user/${id}?returnDeleted=true`)
         .set('Authorization', 'Bearer '.concat(token))
         .end((err, res) => {
           expect(res).to.have.status(200);
-          expect(res.body).to.have.property('email');
+          expect(res.body).to.include.keys('_id', 'email', 'isDeleted');
           expect(res.body.isDeleted).to.equal(true);
+          done();
+        });
+    });
+
+    it('should return 404: Cannot update deleted user', done => {
+      chai.request(app)
+        .patch(`/user/${id}`)
+        .set('Authorization', 'Bearer '.concat(token))
+        .send(users[5])
+        .end((err, res) => {
+          expect(res).to.have.status(404);
+          expect(res.body).to.have.property('message');
+          expect(res.body.message).to.equal('User not found');
+          done();
+        });
+    });
+
+    it('should return 200: Should update Deleted', done => {
+      chai.request(app)
+        .patch(`/user/${id}?updateDeleted=true`)
+        .set('Authorization', 'Bearer '.concat(token))
+        .send({ isDeleted: false })
+        .end((err, res) => {
+          expect(res).to.have.status(200);
+          expect(res.body).to.include.keys('_id', 'email', 'isDeleted');
+          expect(res.body.isDeleted).to.equal(false);
           done();
         });
     });
